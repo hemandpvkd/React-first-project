@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+  }
+  form{
+    background: lightgrey;
+    max-width: 250px;
+    display: flex;
+    height: 35px;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    margin: 2px;
+    overflow:hidden;
+    margin-left:10px;
+  }
+form.Search-form input[type=text] {
+    font-size: 17px;
+    display: flex;
+    border: 0;
+    flex: auto;
+    color: lightgrey;
+  }
+  
+  /* Style the submit button */
+  form.Search-form button {
+    float: left;
+    color: lightgrey;
+    font-size: 17px;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    margin: 0;
+    border: 0;
+    width:40px;
+    border-radius: 0;
+    padding: 0;
+    padding-top: 4px;
+  }
+  .search-input::placeholder {
+    color: lightgrey; 
+font-size: 14px;  }
+  
+  form.Search-form button:hover {
+  }
+  
+  /* Clear floats */
+  form.Search-form::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

@@ -1,0 +1,16 @@
+.Header{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray
+}
+h3{
+    flex: auto;
+    text-align: start;
+}
+.User-profile-pic{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px; 
+    /* border: 1px solid #d3d3d352; 
+    padding:2px; */
+  }

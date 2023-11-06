@@ -1,0 +1,14 @@
+.custom-button {
+    background-color: #2862ff;
+    color: white;
+    border: none;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  

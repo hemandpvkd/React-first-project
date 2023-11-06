@@ -1,0 +1,42 @@
+.Today-card{
+    border-top: 1px solid lightgray;
+    padding: 10px;
+    display: flex;
+}
+.Todays-profile-pic{
+    width: 45px;
+    height: 45px;
+    border-radius: 23px; 
+    padding:4px;
+    margin-right: 10px;
+  }
+  .Today-card-content-wrapper{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #f5f7ff;
+    margin: 12px;
+    padding: 8px;
+    align-self: center;
+    border-radius: 30px;
+  }
+  .Today-card-content{
+    display: flex;
+    flex-direction: column;
+  }
+  .Today-card-work{
+    font-weight: bold;
+    font-size: 16px;
+    text-align: start;
+  }
+  .Today-card-position{
+    font-size: 12px;
+    text-align: start;
+    margin-top: 2px;
+    color: #9c9c9c;
+  }
+  .Today-card-time{
+    font-size: 12px;
+    text-align: start;
+    margin-left: 5px;
+  }
