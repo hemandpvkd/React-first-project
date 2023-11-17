@@ -3,10 +3,10 @@ import '../Home.css'
 import Header from '../../../components/atoms/Header';
 import { Grid, Paper, Typography } from '@mui/material';
 
-const TopWidget = () => {
+const TopWidget = ({title}:{title:string}) => {
     return (
             <Grid item xs={12}>
-                <Header />
+                <Header title={title}/>
             </Grid>
     );
 };

@@ -19,7 +19,11 @@ form.Search-form input[type=text] {
     flex: auto;
     color: lightgrey;
   }
-  
+  .Search-form-icon{
+    align-self: center;
+    background-color: white;
+    height: 35px;
+  }
   /* Style the submit button */
   form.Search-form button {
     float: left;

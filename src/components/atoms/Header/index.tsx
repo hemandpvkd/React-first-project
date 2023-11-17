@@ -6,10 +6,10 @@ import ArrowDropDownTwoTone from '@mui/icons-material/ArrowDropDownTwoTone';
 
 const profilePic= "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 
-const Header = () => {
+const Header = ({title}:{title:string}) => {
   return (
     <div className='Header'>
-        <h3>Contacts</h3>
+        <h3>{title}</h3>
         <SearchIcon sx={{ fontSize: 20, color:'lightgrey',marginRight:1 }}/>
         <NotificationsActive sx={{ fontSize: 20, color:'lightgrey',marginRight:1  }}/>
           <img className='User-profile-pic' src={profilePic} alt={'profile'} />
