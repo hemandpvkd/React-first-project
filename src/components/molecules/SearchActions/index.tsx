@@ -3,10 +3,10 @@ import './SearchActions.css'
 import Search from '../../atoms/Search';
 import AddNew from '../../atoms/AddNew';
 
-const SearchActions = () => {
+const SearchActions = ({searchUsers}:{searchUsers?:any}) => {
   return (
     <div className='Search-actions'>
-        <Search/>
+        <Search onSearch={searchUsers}/>
         <AddNew/>
     </div>
   );

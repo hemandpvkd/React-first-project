@@ -15,23 +15,26 @@ import {
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './UserTable.css'
+import mockUsers from '../../../mockData/mockUsers';
+
+// interface User {
+//   first_name: string;
+//   avatar: string | undefined;
+//   id: number;
+//   name: string;
+//   profilePic: string;
+//   phone: string;
+//   balance: number;
+//   orders: number;
+//   date: string;
+//   status: string;
+// }
 
 interface User {
-  id: number;
-  name: string;
-  profilePic: string;
-  phone: string;
-  balance: number;
-  orders: number;
-  date: string;
-  status: string;
+  users: [];
 }
 
-interface UserTableProps {
-  users: User[];
-}
-
-const UserTable: React.FC<UserTableProps> = ({ users }) => {
+const UserTable: React.FC<any> = ({ users, searchText }) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -63,16 +66,33 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelecteds = users.map((user) => user.id);
+      const newSelecteds = users.map((user: { id: number | string; }) => user.id);
       setSelectedRows(newSelecteds);
     } else {
       setSelectedRows([]);
     }
   };
 
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>,userId:number) => {
+  const highlightText = (text: string) => {
+    const lowerCaseText = text.toLowerCase();
+    const index = lowerCaseText.indexOf(searchText.toLowerCase());
+
+    if (index !== -1) {
+      return (
+        <>
+          {text.substring(0, index)}
+          <span style={{ backgroundColor: 'yellow' }}>{text.substr(index, searchText.length)}</span>
+          {text.substring(index + searchText.length)}
+        </>
+      );
+    }
+
+    return text;
+  };
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, userId: number) => {
     setAnchorEl(event.currentTarget);
-    const user = users.find((u) => u.id === userId);
+    const user = users.find((u: { id: number; }) => u.id === userId);
     setSelectedUser(user || null);
   };
 
@@ -86,7 +106,7 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
     handleMenuClose();
   };
 
-  const handleEdit = (users:any) => {
+  const handleEdit = (users: any) => {
     // Implement your edit logic here
     console.log('Edit clicked for:', selectedUser);
     handleMenuClose();
@@ -104,8 +124,8 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
                 onChange={handleSelectAllClick}
               />
             </TableCell>
+            <TableCell></TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>Profile Picture</TableCell>
             <TableCell>Phone</TableCell>
             <TableCell>Balance</TableCell>
             <TableCell>Orders</TableCell>
@@ -115,25 +135,25 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
           </TableRow>
         </TableHead>
         <TableBody >
-          {users.map((user) => (
+          {users.map((user: { id: number; name: string; avatar: string; first_name: string, last_name: string }, index: number) => (
             <TableRow key={user.id}>
-              <TableCell style={{ height: 20}}>
-                <Checkbox 
+              <TableCell style={{ height: 20 }}>
+                <Checkbox
                   checked={selectedRows.indexOf(user.id) !== -1}
                   onChange={(event) => handleCheckboxClick(event, user.id)}
                 />
               </TableCell>
-              <TableCell>{user.name}</TableCell>
               <TableCell>
-                <Avatar alt={user.name} src={user.profilePic} />
+                <Avatar alt={user.name} src={user?.avatar} />
               </TableCell>
-              <TableCell>{user.phone}</TableCell>
-              <TableCell>{user.balance}</TableCell>
-              <TableCell>{user.orders}</TableCell>
-              <TableCell>{user.date}</TableCell>
-              <TableCell>{user.status}</TableCell>
+              <TableCell>{highlightText(user?.first_name)} {highlightText(user?.last_name)}</TableCell>
+              <TableCell>{mockUsers?.[index]?.phone ?? mockUsers?.[0]?.phone} </TableCell>
+              <TableCell>{mockUsers?.[index]?.balance ?? mockUsers?.[0]?.phone}</TableCell>
+              <TableCell>{mockUsers?.[index]?.orders ?? mockUsers?.[0]?.phone}</TableCell>
+              <TableCell>{mockUsers?.[index]?.date ?? mockUsers?.[0]?.phone}</TableCell>
+              <TableCell>{mockUsers?.[index]?.status ?? mockUsers?.[0]?.phone}</TableCell>
               <TableCell>
-                <IconButton onClick={(event) =>handleMenuOpen(event, user.id)}>
+                <IconButton onClick={(event) => handleMenuOpen(event, user.id)}>
                   <MoreVertIcon />
                 </IconButton>
                 <Menu
